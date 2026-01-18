@@ -1,5 +1,5 @@
 fn main() {
-    let mut sushi = String::from("Yellotail");
+    let mut sushi = String::from("Yellowtail");
     let sushi_raw_pointer_1 = &raw const sushi;
     // Otra forma alternativa es declarar el mismo tipo y asignarle una referencia regular, porque Rust lo convierte al tipo especificado.
     let sushi_raw_pointer2: *const String = &sushi;
@@ -12,6 +12,11 @@ fn main() {
     let sushi_mutable_raw_pointer_2 = &raw mut sushi;
     // Cuando tendremos problemas es a la hora de actualizar los valores de esos punteros o al desreferenciar. Para poderlo hacer
     // Hará falta la keyword: 'unsafe'.
+    unsafe {
+        println!("{}", *sushi_raw_pointer_1);
+    }
+    // Supongamos que borramos la variable de la memoria
+    drop(sushi);
     unsafe {
         println!("{}", *sushi_raw_pointer_1);
     }
